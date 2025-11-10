@@ -24,7 +24,10 @@ export const getTaskById = async (
     userId: string,
 ): Promise<Task> => {
     try {
-        return getById(id, userId);
+        const task = await getById(id);
+        validateUserAccess(userId, task.userId!!);
+        delete task.userId; // Remove userId before returning
+        return task;
     } catch (error) {
         console.error('service:getTaskById:Error fetching task by ID:', error);
         throw error;
@@ -33,7 +36,9 @@ export const getTaskById = async (
 
 export const createTask = async (task: Task): Promise<Task> => {
     try {
-        return add(task);
+        const createdTask = await add(task);
+        delete createdTask.userId; // Remove userId before returning
+        return createdTask;
     } catch (error) {
         console.error('service:createTask:Error creating task:', error);
         throw error;
@@ -45,7 +50,11 @@ export const updateTask = async (
     task: Partial<Task>,
 ): Promise<Task> => {
     try {
-        return update(id, task);
+        const existingTask = await getById(id);
+        validateUserAccess(task.userId!!, existingTask.userId!!);
+        const updatedTask = await update(id, task);
+        delete updatedTask.userId;
+        return updatedTask;
     } catch (error) {
         console.error('service:updateTask:Error updating task:', error);
         throw error;
@@ -54,9 +63,22 @@ export const updateTask = async (
 
 export const deleteTask = async (id: string, userId: string): Promise<Task> => {
     try {
-        return remove(id, userId);
+        const existingTask = await getById(id);
+        validateUserAccess(userId, existingTask.userId!!);
+        await remove(id);
+        delete existingTask.userId; // Remove userId before returning
+        return existingTask;
     } catch (error) {
         console.error('service:deleteTask:Error deleting task:', error);
         throw error;
+    }
+};
+
+const validateUserAccess = (
+    requestUserId: string,
+    originalTaskUserId: string,
+) => {
+    if (originalTaskUserId !== requestUserId) {
+        throw new Error('Unauthorized access to task');
     }
 };

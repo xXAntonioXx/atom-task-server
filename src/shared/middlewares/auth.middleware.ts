@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
-import { auth } from '../firebase.js';
+import { auth } from '../../firebase.js';
 
 export const verifyToken = async (
     req: Request,

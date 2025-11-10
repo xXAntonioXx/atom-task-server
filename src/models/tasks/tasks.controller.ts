@@ -7,7 +7,6 @@ import {
     updateTask,
     deleteTask,
 } from './tasks.service.js';
-import { validateRequestIdExists } from '../../utils/validate-request-id-exists.utils.js';
 
 export const getAll = async (req: Request, res: Response) => {
     const tasks = await getAllUserTasks((req as any).user.uid!!);
@@ -16,7 +15,6 @@ export const getAll = async (req: Request, res: Response) => {
 
 export const get = async (req: Request, res: Response) => {
     try {
-        validateRequestIdExists(req);
         const task = await getTaskById(
             req.params.id!!,
             (req as any).user.uid!!,
@@ -35,7 +33,6 @@ export const create = async (req: Request, res: Response) => {
 
 export const update = async (req: Request, res: Response) => {
     try {
-        validateRequestIdExists(req);
         const taskToUpdate = {
             ...req.body,
             userId: (req as any).user.uid,
@@ -49,7 +46,6 @@ export const update = async (req: Request, res: Response) => {
 
 export const remove = async (req: Request, res: Response) => {
     try {
-        validateRequestIdExists(req);
         const task = await deleteTask(req.params.id!!, (req as any).user.uid!!);
         res.json(task);
     } catch (error: any) {

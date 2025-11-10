@@ -8,5 +8,6 @@ export const serializeTask = (doc: any): Task => {
         description: docData.description,
         completed: docData.completed,
         createdAt: docData.createdAt.toDate(),
+        userId: docData.userId,
     } as Task;
 };
