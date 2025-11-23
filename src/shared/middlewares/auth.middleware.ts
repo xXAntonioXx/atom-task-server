@@ -18,4 +18,5 @@ export const verifyToken = async (
         console.error('middleware:verifyToken:Error verifying token:', error);
         res.status(401).json({ error: 'Unauthorized' });
     }
+        return;
 };

@@ -1,4 +1,4 @@
-import type { Task } from '../interfaces/task.interface';
+import type { Task } from '../interfaces/task.interface.js';
 
 export const serializeTask = (doc: any): Task => {
     const docData = doc.data();

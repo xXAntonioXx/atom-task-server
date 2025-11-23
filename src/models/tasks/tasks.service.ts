@@ -5,7 +5,7 @@ import {
     updateTask as update,
     deleteTask as remove,
 } from './data/tasks.repository.js';
-import type { Task } from './interfaces/task.interface';
+import type { Task } from './interfaces/task.interface.js';
 
 export const getAllUserTasks = async (userId: string): Promise<Task[]> => {
     try {
