@@ -7,6 +7,7 @@ export const getAllUserTasks = async (userId: string): Promise<Task[]> => {
     const snapshot = await db
         .collection('tasks')
         .where('userId', '==', userId)
+        .orderBy('createdAt', 'desc')
         .get();
 
     const tasks = snapshot.docs.map((doc) => {
