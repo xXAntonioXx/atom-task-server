@@ -1,4 +1,4 @@
-import { auth } from '../../firebase.js';
+import { auth } from '../../firebase';
 
 export const loginService = async (email: string) => {
     try {

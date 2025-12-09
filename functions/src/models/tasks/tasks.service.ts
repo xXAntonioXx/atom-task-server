@@ -4,8 +4,8 @@ import {
     addTask as add,
     updateTask as update,
     deleteTask as remove,
-} from './data/tasks.repository.js';
-import type { Task } from './interfaces/task.interface.js';
+} from './data/tasks.repository';
+import type { Task } from './interfaces/task.interface';
 
 export const getAllUserTasks = async (userId: string): Promise<Task[]> => {
     try {

@@ -1,8 +1,8 @@
 import express from 'express';
-import setRoutes from './app.routes.js';
+import setRoutes from './app.routes';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { loggingEndpointMiddleware } from './shared/middlewares/logging.middleware.js';
+import { loggingEndpointMiddleware } from './shared/middlewares/logging.middleware';
 import * as functions from 'firebase-functions';
 
 dotenv.config();

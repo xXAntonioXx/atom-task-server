@@ -1,6 +1,6 @@
 import type { Express } from 'express';
-import tasksRoutes from './models/tasks/tasks.routes.js';
-import authRoutes from './models/auth/auth.routes.js';
+import tasksRoutes from './models/tasks/tasks.routes';
+import authRoutes from './models/auth/auth.routes';
 
 const setRoutes = (app: Express) => {
     app.use('/tasks', tasksRoutes);

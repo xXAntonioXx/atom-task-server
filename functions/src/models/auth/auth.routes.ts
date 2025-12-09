@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { login, signup } from './auth.controller.js';
-import { loginRequestSchema } from './schemas/login-request.schema.js';
-import { bodyValidation } from '../../shared/middlewares/body-validation.middleware.js';
+import { login, signup } from './auth.controller';
+import { loginRequestSchema } from './schemas/login-request.schema';
+import { bodyValidation } from '../../shared/middlewares/body-validation.middleware';
 
 const router = Router();
 

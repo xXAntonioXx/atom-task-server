@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { get, getAll, create, update, remove } from './tasks.controller.js';
-import { verifyToken } from '../../shared/middlewares/auth.middleware.js';
-import { bodyValidation } from '../../shared/middlewares/body-validation.middleware.js';
-import { taskRequestSchema } from './schemas/task-request.schema.js';
-import { validateRequestIdExists } from '../../shared/middlewares/id-validation.middleware.js';
+import { get, getAll, create, update, remove } from './tasks.controller';
+import { verifyToken } from '../../shared/middlewares/auth.middleware';
+import { bodyValidation } from '../../shared/middlewares/body-validation.middleware';
+import { taskRequestSchema } from './schemas/task-request.schema';
+import { validateRequestIdExists } from '../../shared/middlewares/id-validation.middleware';
 
 const router = Router();
 

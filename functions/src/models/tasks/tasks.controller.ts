@@ -1,12 +1,12 @@
 import type { Request, Response } from 'express';
-import type { Task } from './interfaces/task.interface.js';
+import type { Task } from './interfaces/task.interface';
 import {
     getAllUserTasks,
     getTaskById,
     createTask,
     updateTask,
     deleteTask,
-} from './tasks.service.js';
+} from './tasks.service';
 
 export const getAll = async (req: Request, res: Response) => {
     const tasks = await getAllUserTasks((req as any).user.uid!!);

@@ -1,7 +1,7 @@
-import { db } from '../../../firebase.js';
-import type { Task } from '../interfaces/task.interface.js';
-import { serializeTask } from '../serializers/tasks.serializer.js';
-import { firestoreDocExists } from '../../../shared/utils/firestore-doc.utils.js';
+import { db } from '../../../firebase';
+import type { Task } from '../interfaces/task.interface';
+import { serializeTask } from '../serializers/tasks.serializer';
+import { firestoreDocExists } from '../../../shared/utils/firestore-doc.utils';
 
 export const getAllUserTasks = async (userId: string): Promise<Task[]> => {
     const snapshot = await db
