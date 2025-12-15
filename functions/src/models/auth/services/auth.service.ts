@@ -1,4 +1,4 @@
-import { auth } from '../../firebase';
+import { auth } from '../../../firebase';
 
 export const loginService = async (email: string) => {
     try {
@@ -35,7 +35,7 @@ export const signupService = async (email: string) => {
     }
 };
 
-const validateUserExists = async (email: string) => {
+export const validateUserExists = async (email: string) => {
     try {
         const userRecord = await auth.getUserByEmail(email);
         return userRecord;
