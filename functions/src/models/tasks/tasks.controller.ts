@@ -6,7 +6,7 @@ import {
     createTask,
     updateTask,
     deleteTask,
-} from './tasks.service';
+} from './services/tasks.service';
 
 export const getAll = async (req: Request, res: Response) => {
     const tasks = await getAllUserTasks((req as any).user.uid!!);
